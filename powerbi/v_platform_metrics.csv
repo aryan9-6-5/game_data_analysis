@@ -1,0 +1,4 @@
+platform_name,executions,passed,failed,pass_rate,defects,critical_defects,open_defects,defects_per_100_exec
+PC,14297,12932,1140,0.919,1015,116,71,7.099
+Xbox,10931,10124,640,0.9405,591,55,52,5.407
+PlayStation,10710,10011,544,0.9485,587,63,38,5.481

@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:15
+    container_name: game_qa_db
+    environment:
+      POSTGRES_USER: ${PGUSER:-postgres}
+      POSTGRES_PASSWORD: ${PGPASSWORD:?set PGPASSWORD in .env}
+      POSTGRES_DB: ${PGDATABASE:-game_qa}
+    ports:
+      - "5440:5432"
+    volumes:
+      - game_qa_data:/var/lib/postgresql/data
+volumes:
+  game_qa_data:

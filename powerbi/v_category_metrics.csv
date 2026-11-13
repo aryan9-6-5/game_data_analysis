@@ -1,0 +1,9 @@
+category,defects,critical_defects,avg_resolution_days,reopen_rate,blocking_days
+UI/UX,203,8,6.31,0.0847,30.4
+Audio,160,1,7.74,0.1103,23.7
+Crash/Stability,331,101,5.07,0.1661,276.7
+Graphics/Rendering,260,7,8.45,0.105,87.7
+Gameplay Logic,327,19,6.63,0.1213,110.1
+Performance,310,23,7.69,0.1713,154.1
+Progression/Data,202,23,7.25,0.1649,102.4
+Online/Network,400,52,7.56,0.2156,225.3

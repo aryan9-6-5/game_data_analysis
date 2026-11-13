@@ -1,0 +1,9 @@
+pandas
+numpy
+scipy
+scikit-learn
+statsmodels
+psycopg2-binary
+python-dotenv
+plotly
+pytest

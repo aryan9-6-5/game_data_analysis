@@ -1,0 +1,42 @@
+// DAX measures for a Power BI report built on the CSVs in this folder.
+// Import: v_build_trend (fact, one row per build), v_platform_metrics, v_category_metrics,
+//         v_tester_efficiency, build_confidence_intervals, build_risk_scores.
+// Relate build_confidence_intervals[build_id] and build_risk_scores[build_id] to v_build_trend[build_id] (1:1).
+// This file is untested in Power BI Desktop (not installed where this project was built).
+
+Executions       = SUM ( v_build_trend[executions] )
+Passed           = SUM ( v_build_trend[passed] )
+Failed           = SUM ( v_build_trend[failed] )
+
+Test Pass Rate   = DIVIDE ( [Passed], [Passed] + [Failed] )
+
+Total Defects    = SUM ( v_build_trend[defects] )
+Open Defects     = SUM ( v_build_trend[open_defects] )
+Critical Defects = SUM ( v_build_trend[critical_defects] )
+
+Defect Discovery Rate per 100 = DIVIDE ( [Total Defects] * 100, [Executions] )
+
+Critical per Build = AVERAGE ( v_build_trend[critical_defects] )
+
+Avg Resolution Days =
+    DIVIDE (
+        SUMX ( v_build_trend, v_build_trend[avg_resolution_days] * v_build_trend[defects] ),
+        [Total Defects]
+    )   // defect-weighted; build rows hold per-build averages
+
+Reopen Rate = AVERAGE ( v_build_trend[reopen_rate] )
+
+Executions per Tester Hour = AVERAGE ( v_build_trend[executions_per_tester_hour] )
+
+Release-Ready Builds = CALCULATE ( COUNTROWS ( v_build_trend ), v_build_trend[meets_release_quality] = TRUE () )
+
+Release-Ready % = DIVIDE ( [Release-Ready Builds], COUNTROWS ( v_build_trend ) )
+
+Pass Rate Threshold = 0.925
+
+Pass Rate vs Threshold = [Test Pass Rate] - [Pass Rate Threshold]
+
+Avg Release Delay Days = AVERAGE ( v_build_trend[release_delay_days] )
+
+// pass_rate_delta is computed in SQL with LAG() (see sql/02_views.sql), so no time-intelligence DAX is needed.
+Pass Rate Change = AVERAGE ( v_build_trend[pass_rate_delta] )

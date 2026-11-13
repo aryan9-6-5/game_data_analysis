@@ -1,0 +1,12 @@
+team,experience_band,executions,avg_duration_min,executions_per_hour,fail_pct
+Functional QA,5y+,7899,15.25,3.934,6.355
+Functional QA,<2y,4024,17.93,3.346,6.014
+Regression QA,2-5y,1983,14.71,4.078,5.749
+Regression QA,5y+,982,15.01,3.998,6.823
+Compatibility QA,5y+,7039,15.12,3.969,6.848
+Automation,2-5y,1006,14.89,4.03,6.561
+Automation,5y+,2005,15.18,3.952,7.98
+Automation,<2y,1018,17.83,3.364,5.501
+Regression QA,<2y,948,17.53,3.423,6.118
+Compatibility QA,2-5y,6013,15.08,3.978,6.286
+Functional QA,2-5y,3021,15.01,3.997,6.587
